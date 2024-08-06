@@ -1,0 +1,70 @@
+.toast {
+  position: fixed;
+  width: 20rem;
+  $height: 4rem;
+  height: $height;
+
+  left: 50%;
+  $top-distance: 1rem;
+  top: $top-distance;
+
+  transform: translateX(-50%);
+
+  background: url('./images/toast.svg') center / contain no-repeat;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+
+  filter: drop-shadow(0 0 2rem black);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:before {
+    content: '';
+    position: absolute;
+    $shrink-y: .5rem;
+    $shrink-x: 1.7rem;
+    top: $shrink-y - .1rem;
+    left: $shrink-x;
+    height: calc(100% - $shrink-y * 2);
+    width: calc(100% - $shrink-x * 2);
+
+    background: linear-gradient(#{mix(white, black, 12%)}, #{mix(white, black, 8%)});
+    border-radius: 2rem;
+
+    z-index: -1;
+  }
+
+  &.open {
+    animation: .6s pop-in forwards;
+  }
+
+  @keyframes pop-in {
+    from {
+      transform: translateX(-50%) translateY(-$height - $top-distance - 4rem);
+    }
+    to {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  &.close {
+    animation: .8s pop-out forwards;
+  }
+
+  @keyframes pop-out {
+    from {
+      transform: translateX(-50%) translateY(0);
+    }
+    to {
+      transform: translateX(-50%) translateY(-$height - $top-distance - 4rem);
+    }
+  }
+
+  p {
+    margin: 0 0 .1rem;
+    text-align: center;
+    color: transparentize(white, .3);
+  }
+}

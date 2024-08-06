@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('./fonts/IBMPlexSans-Regular.woff2') format('woff2'),
+  url('./fonts/IBMPlexSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Yeseva One';
+  src: url('./fonts/YesevaOne-Regular.woff2') format('woff2'),
+  url('./fonts/YesevaOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+html, body, #app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #121213;
+  color: #F8F8F8;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.signature {
+  position: fixed;
+  height: 5rem;
+  bottom: 1rem;
+  right: 1rem;
+
+  opacity: .1;
+
+  pointer-events: none;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: min-content min-content auto;
+  grid-template-areas: 'header' 'grid' 'keyboard';
+  justify-items: center;
+  padding-bottom: 3rem;
+  box-sizing: border-box;
+  background: linear-gradient(0deg, rgba(0, 0, 0, .9), rgba(0, 0, 0, .8)), url('./images/noise.svg');
+}

@@ -1,0 +1,32 @@
+{
+  "name": "profadle",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js",
+    "watch": "NODE_ENV=watch node build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@corvu/dialog": "^0.2.0",
+    "@hyrious/esbuild-plugin-svgo": "^0.2.0",
+    "autoprefixer": "^10.4.19",
+    "canvas-confetti": "^1.9.3",
+    "classnames": "^2.5.1",
+    "esbuild": "^0.21.4",
+    "esbuild-plugin-solid": "^0.6.0",
+    "esbuild-sass-plugin": "^3.3.0",
+    "postcss": "^8.4.38",
+    "postcss-modules": "^6.0.0",
+    "solid-icons": "^1.1.0",
+    "solid-js": "^1.8.17",
+    "solid-toast": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.6.4"
+  }
+}

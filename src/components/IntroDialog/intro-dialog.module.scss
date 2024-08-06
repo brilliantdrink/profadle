@@ -1,0 +1,130 @@
+.trigger {
+  appearance: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  svg path {
+    $added-thicc: 30px;
+
+    &:first-child {
+      stroke-width: 40px + $added-thicc;
+    }
+
+    &:last-child {
+      stroke-width: $added-thicc;
+      stroke: white;
+      transform: translateY($added-thicc);
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  background: transparentize(black, .5);
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30rem;
+  min-height: 10rem;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-bottom: .5rem;
+
+  border: 2rem solid;
+  border-image: url('../../images/modal-frame.svg') 17;
+  filter: drop-shadow(0 0 2rem black);
+  color: transparentize(white, .2);
+
+  display: flex;
+  flex-direction: column;
+
+  &:before {
+    content: '';
+    position: absolute;
+    $overshoot: 1rem;
+    top: -$overshoot;
+    left: -$overshoot;
+    height: calc(100% + $overshoot * 2);
+    width: calc(100% + $overshoot * 2);
+
+    background: linear-gradient(#{mix(white, black, 10%)}, #{mix(white, black, 5%)});
+    border-radius: .5rem;
+
+    z-index: -1;
+  }
+
+  .close {
+    align-self: end;
+    appearance: none;
+    border: 2px solid transparentize(white, .9);
+    background: transparentize(white, .95);
+
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+
+    transition: .3s;
+    outline: 0;
+    cursor: pointer;
+
+    &:after {
+      content: '×';
+      color: transparentize(white, .5);
+      font-size: 1rem;
+    }
+
+    &:focus, &:hover {
+      border: 2px solid transparentize(white, .8);
+      background: transparentize(white, .9);
+    }
+  }
+
+  h2 {
+    font-family: 'Yeseva One', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0 0 1rem;
+  }
+
+  p {
+    margin: 0 0 .5rem;
+    font-size: 1rem;
+    line-height: 1.3;
+
+    .green {
+      color: transparentize(#538D4E, 0);
+    }
+
+    .yellow {
+      color: transparentize(#B59F3B, .1);
+    }
+
+    .gray {
+      color: transparentize(white, .5);
+    }
+
+    em {
+      font-style: normal;
+      vertical-align: middle;
+      font-size: 1.5rem;
+      line-height: 1.1rem;
+    }
+  }
+
+  hr {
+    width: 100%;
+    color: transparentize(white, .9);
+    margin: .5rem 0 1rem;
+  }
+}

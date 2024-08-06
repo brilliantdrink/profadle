@@ -1,0 +1,125 @@
+.grid {
+  $gap: .4rem;
+  grid-area: grid;
+  align-self: center;
+
+  margin-top: $gap * 2;
+
+  position: relative;
+  display: grid;
+  grid-template-rows: 3.5rem * 5 auto;
+  align-items: center;
+  gap: $gap;
+
+  .guesses {
+    align-self: end;
+    justify-self: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+
+    font-family: 'Yeseva One', serif;
+    font-size: 3rem;
+    $transparency: .1;
+    color: transparentize(white, $transparency * 3);
+
+    .word {
+      height: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(5, 3.5rem);
+
+      .letter {
+        &.present {
+          color: transparentize(#B59F3B, $transparency);
+        }
+
+        &.correct {
+          color: transparentize(#538D4E, $transparency);
+        }
+      }
+    }
+  }
+
+  .input {
+    $size: 6rem;
+    padding: 1rem;
+    color: transparent;
+    background: url('../../images/ornament.svg') center / contain no-repeat, radial-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, 0));
+    border-radius: 1.5rem;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: .5rem;
+
+    .letterWrapper {
+      height: $size;
+      width: $size;
+
+      border: 2px solid rgba(255, 255, 255, .05);
+      border-radius: 1rem;
+
+      .letter {
+        height: $size;
+        width: $size;
+        background-size: $size * 5;
+        filter: brightness(1.2);
+
+        transform-origin: bottom;
+      }
+
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) .letter {
+          background-position-x: (5 - ($i - 1)) * $size - ((3 - $i) * .1rem);
+        }
+      }
+
+      &.punchIn .letter {
+        animation: .1s letter-in cubic-bezier(.7, 0, .7, 1);
+      }
+
+      @keyframes letter-in {
+        from {
+          transform: scale(.5);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      &.correct {
+        animation: 1.2s correct cubic-bezier(.3, 0, .5, 1) forwards;
+        background: radial-gradient(circle closest-side at center, #{transparentize(#538D4E, .8)}, #{transparentize(#538D4E, .95)} 70%, #{transparentize(#538D4E, 1)}) center no-repeat;
+      }
+
+      &.wrong {
+        animation: 1.2s correct cubic-bezier(.3, 0, .5, 1) forwards;
+        background: radial-gradient(circle closest-side at center, #{transparentize(#c94848, .8)}, #{transparentize(#c94848, .95)} 70%, #{transparentize(#c94848, 1)}) center no-repeat;
+      }
+
+      @keyframes correct {
+        from {
+          background-size: 0 0;
+        }
+        to {
+          background-size: 130% 130%;
+        }
+      }
+    }
+  }
+
+  .reactionsCanvas {
+    position: absolute;
+    height: 20rem;
+    width: 15rem;
+    bottom: 9rem;
+    right: -5rem;
+  }
+
+  .guessesIndicator {
+    justify-self: end;
+    font-size: .8rem;
+    color: transparentize(white, .7);
+  }
+}

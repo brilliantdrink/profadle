@@ -1,0 +1,75 @@
+@function key-color($color) {
+  @return radial-gradient(circle farthest-side at bottom center, transparentize($color, 0.3), transparentize($color, 0.7))
+}
+
+.keyboard {
+  grid-area: keyboard;
+
+  margin-top: 2rem;
+  $gap: .5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc($gap + 3px);
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    gap: $gap;
+
+    .key {
+      position: relative;
+      height: 3.5rem;
+      width: 2.7rem;
+
+      appearance: none;
+      background: none;
+      background-image: key-color(#818383);
+      background-size: 100% 110%;
+      $border-width: 2px;
+      background-position-y: -$border-width;
+      border: $border-width solid rgba(255, 255, 255, 0.1);
+      border-radius: .5rem;
+      color: transparentize(#F8F8F8, .1);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 1.3rem;
+
+      cursor: pointer;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      top: 0;
+      transition: top .1s;
+
+      &.long {
+        width: 4rem;
+        font-size: .8rem;
+      }
+
+      &:not(.disable) {
+        &:active {
+          top: 2px;
+
+          &:after {
+            bottom: -1px;
+          }
+        }
+      }
+
+      &.correct {
+        background-image: key-color(#538D4E);
+      }
+
+      &.present {
+        background-image: key-color(#B59F3B);
+      }
+
+      &.absent {
+        background-image: key-color(#3A3A3C);
+      }
+    }
+  }
+}

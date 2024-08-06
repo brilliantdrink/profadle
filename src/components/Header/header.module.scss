@@ -1,0 +1,60 @@
+.header {
+  width: 100%;
+  $header-height: 4rem;
+  height: $header-height;
+  border-bottom: 1px solid #3A3A3C;
+  padding: 0 2rem;
+
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+
+  :first-child {
+    justify-self: start;
+  }
+
+  :last-child {
+    justify-self: end;
+  }
+
+  h1 {
+    height: $header-height;
+    margin: 0;
+
+    position: relative;
+
+    img {
+      height: $header-height;
+    }
+  }
+
+  .group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .profanityCount {
+    background: transparentize(white, .9);
+    border-radius: .5rem;
+    padding: 0 .5rem;
+
+    display: flex;
+    gap: .3rem;
+  }
+
+  .profanityIcon {
+    height: 1.5rem
+  }
+
+  a, button {
+    color: inherit;
+    font-size: 1.5rem;
+
+    display: flex;
+    align-items: center;
+  }
+}
